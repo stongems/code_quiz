@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+    <title>Code Quiz</title>
+  </head>
+  <body>
+    <div id="time" class="timer">Time Remaining: 50</div>
+    <div class="start-screen hidden">
+      <h1>Javascript Code Quiz</h1>
+      <p>
+        Welcome, you will have 70 seconds to complete this test. <br>
+        Time will be removed for wrong answers. Good Luck!
+        <button class="start-btn btn">Start</button>
+      </p>
+    </div>
+
+    <div class="quiz-screen hidden">
+      <div>
+        <div id="question">Question</div>
+        <div id="answer-buttons" class="btn-grid">
+          <button class="btn">A</button>
+          <button class="btn">B</button>
+          <button class="btn">C</button>
+          <button class="btn">D</button>
+        </div>
+      </div>
+      <div class="controls">
+        <button id="next-btn" class="next-btn btn hidden">Next</button>
+        <button id="finish-btn" class="finish-btn btn hidden">Finished</button>
+      </div>
+    </div>
+    <div class="finish-screen hidden">
+      <h2>Javascript Code Quiz</h12>
+        <p>
+          Congradulations on completeing the test <br>
+      </p>
+    </div>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
