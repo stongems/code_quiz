@@ -1,76 +1,96 @@
-// All our JS buttons are set declared here 
+//create a score sheet
+//JSON the score
+
+// All our JS buttons are set declared here
 const startBtn = document.querySelector(".start-btn");
-const nextButton = document.querySelector(".next-btn");
-const finishButton = document.querySelector(".finish-btn");
-const answerButtonsElement = document.getElementById("answer-buttons");
+const nextBtn = document.querySelector(".next-btn");
+const finishBtn = document.querySelector(".finish-btn");
+const answerBtnEl = document.getElementById("answer-buttons");
+const saveBtn = document.querySelector(".save-btn");
+const submitBtn = document.querySelector('.submit-Btn');
+const restartBtn = document.querySelector(".restart-btn");
 
 // Countdown Timer
 const timer = document.querySelector(".timer");
 const timeUp = document.querySelector("#time-up");
 
 // Will sets the amount fo time we want for the timer
-let secondsLeft = 50;
+const QUIZ_LENGTH = 100;
+let secondsLeft = QUIZ_LENGTH;
 
 // Container declaration
 const startScreen = document.querySelector(".start-screen");
-const questionContainerElement = document.querySelector(".quiz-screen");
+const questionPoolEl = document.querySelector(".quiz-screen");
 const finishScreenElement = document.querySelector(".finish-screen");
 const quiz = document.querySelector("#quiz");
 
-
 // Question declaration
-const questionElement = document.getElementById("question");
-let shuffledQuestions, currentQuestionIndex;
+const questionEl = document.getElementById("question");
+let randomQuizQuestion, presentQuizQuestion;
 const questionPool = 0;
 
+let userScore = "";
+let userInitials = "";
+
 //This will un-hide the start screen when the page loads
-startScreen.classList.remove("hidden")
+startScreen.classList.remove("hidden");
 
 // This makes the start button function, it will start the quiz and time
-startBtn.addEventListener("click", function (e) {
+startBtn.addEventListener("click", () => {
   startQuiz();
   setTime();
 });
 
-//This makes the next button function, it will set the next question and add one to the current question list
-nextButton.addEventListener("click", () => {
-  currentQuestionIndex++;
+//This makes the next button function, it will set the next question
+nextBtn.addEventListener("click", () => {
+//This will take us to the next question
+  presentQuizQuestion++;
+  //starts the next question function
   setNextQuestion();
 });
 
 // Here it will launch the finish screen
-finishButton.addEventListener("click", () => {
+finishBtn.addEventListener("click", () => {
   finishQuiz();
 });
 
-// This is the timer in the top right corner
+// Timer
 function setTime() {
-  const timerInterval = setInterval(function () {
+  //Declaries timeInterval to the function
+  const timerInterval = setInterval(() => {
+    //subtracts the time by one
     secondsLeft--;
+    //Set to display the time as "Time Remaining 75" and counting
     timer.textContent = `Time Remaining: ${secondsLeft}`;
-    if (secondsLeft === 0) {
+    //If statement to handle what happens when time runs out
+    if (secondsLeft <= 0) {
+      secondsLeft = 0;
       clearInterval(timerInterval);
       alert("You have run out of time!");
       finishQuiz();
     }
+    //1000 miliseconds = 1 second
   }, 1000);
 }
-
+//Kicks off the first quiz box
 function startQuiz() {
+    //Hides the start up screen
   startScreen.classList.add("hidden");
-  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-  currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hidden");
+  //Sorts the questions to be random using math.random
+  randomQuizQuestion = questions.sort(() => Math.random() - 0.5);
+  //set to zero to start at the begining 
+  presentQuizQuestion = 0;
+  questionPoolEl.classList.remove("hidden");
   setNextQuestion();
 }
 
 function setNextQuestion() {
-  resetState();
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
+  nextQuestion();
+  displayQuestion(randomQuizQuestion[presentQuizQuestion]);
 }
 
-function showQuestion(question) {
-  questionElement.innerText = question.question;
+function displayQuestion(question) {
+  questionEl.innerText = question.question;
   question.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.innerText = answer.text;
@@ -79,38 +99,39 @@ function showQuestion(question) {
       button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", selectAnswer);
-    answerButtonsElement.appendChild(button);
+    answerBtnEl.appendChild(button);
   });
 }
 
-function resetState() {
-  nextButton.classList.add("hidden");
-  
-  while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+function nextQuestion() {
+  nextBtn.classList.add("hidden");
+  //When a firstChild exists then remove the first child (deleting the question)
+  while (answerBtnEl.firstChild) {
+    answerBtnEl.removeChild(answerBtnEl.firstChild);
   }
 }
 
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
-  addAnswerClass(document.body, correct);
-  Array.from(answerButtonsElement.children).forEach((button) => {
-    addAnswerClass(button, button.dataset.correct);
+  evaluateAnswer(document.body, correct);
+  Array.from(answerBtnEl.children).forEach((button) => {
+    evaluateAnswer(button, button.dataset.correct);
   });
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove("hidden");
+  if (randomQuizQuestion.length > presentQuizQuestion + 1) {
+    nextBtn.classList.remove("hidden");
   } else {
-    finishButton.classList.remove("hidden");
+    finishBtn.classList.remove("hidden");
   }
 }
 // This will add class="correct" if correct = true & will add class="false" if incorrect, changing the text color for all answers
-function addAnswerClass(element, correct) {
+function evaluateAnswer(element, correct) {
   removeAnswerClass(element);
   if (correct) {
     element.classList.add("correct");
   } else {
     element.classList.add("incorrect");
+    secondsLeft -= 1;
   }
 }
 
@@ -120,11 +141,39 @@ function removeAnswerClass(element) {
 }
 
 function finishQuiz() {
-    finishScreenElement.classList.remove("hidden");
-    nextButton.classList.add("hidden");
-    questionContainerElement.classList.add("hidden");
-    finishButton.classList.add("hidden");
-    
+  finishScreenElement.classList.remove("hidden");
+  nextBtn.classList.add("hidden");
+  questionPoolEl.classList.add("hidden");
+  finishBtn.classList.add("hidden");
+  userScore = secondsLeft;
+  saveUserInitials();
+  restartQuiz();
+}
+//Built to save the users initials for scoring purposes
+function saveUserInitials() {
+  userInitials = document.getElementById("initials").value;
+  console.log(userInitials);
+  if (userInitials !== "") {
+      let highScore = JSON.parse(window.localStorage.getItem("highScores")) || []
+      let myScore = {
+          score: secondsLeft,
+          userInitials: userInitials
+      }
+      highScore.push(myScore)
+      window.localStorage.setItem("highScores", JSON.stringify(highScore))
+  }
+}
+//Function built to get the user back to the begining of the test
+function restartQuiz() {
+  //Listens for the click on the Restart Button
+  restartBtn.addEventListener("click", () => {
+    //Hides the finish screen
+    finishScreenElement.classList.add("hidden");
+    //Sets the time back to the original 100 seconds
+    secondsLeft = QUIZ_LENGTH;
+    //will display the first random quiz question on a new quiz
+    startQuiz();
+  });
 }
 
 const questions = [
@@ -194,3 +243,4 @@ const questions = [
     ],
   },
 ];
+submitBtn.onclick = saveUserInitials
