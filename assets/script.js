@@ -7,7 +7,7 @@ const nextBtn = document.querySelector(".next-btn");
 const finishBtn = document.querySelector(".finish-btn");
 const answerBtnEl = document.getElementById("answer-buttons");
 const saveBtn = document.querySelector(".save-btn");
-const submitBtn = document.querySelector('.submit-Btn');
+const submitBtn = document.querySelector(".submit-btn");
 const restartBtn = document.querySelector(".restart-btn");
 
 // Countdown Timer
@@ -17,6 +17,7 @@ const timeUp = document.querySelector("#time-up");
 // Will sets the amount fo time we want for the timer
 const QUIZ_LENGTH = 100;
 let secondsLeft = QUIZ_LENGTH;
+let timerInterval;
 
 // Container declaration
 const startScreen = document.querySelector(".start-screen");
@@ -29,6 +30,7 @@ const questionEl = document.getElementById("question");
 let randomQuizQuestion, presentQuizQuestion;
 const questionPool = 0;
 
+let htmlScoreContainer = document.getElementById("high-score");
 let userScore = "";
 let userInitials = "";
 
@@ -36,28 +38,29 @@ let userInitials = "";
 startScreen.classList.remove("hidden");
 
 // This makes the start button function, it will start the quiz and time
-startBtn.addEventListener("click", () => {
+startBtn.addEventListener("click", function (e) {
   startQuiz();
   setTime();
 });
 
-//This makes the next button function, it will set the next question
-nextBtn.addEventListener("click", () => {
-//This will take us to the next question
+//This makes the next button function, it will set the next question and add one to the current question list
+nextBtn.addEventListener("click", function () {
   presentQuizQuestion++;
-  //starts the next question function
   setNextQuestion();
 });
 
 // Here it will launch the finish screen
-finishBtn.addEventListener("click", () => {
+finishBtn.addEventListener("click", function () {
   finishQuiz();
 });
 
+submitBtn.addEventListener("click", function () {
+  saveUserInitials();
+});
 // Timer
 function setTime() {
   //Declaries timeInterval to the function
-  const timerInterval = setInterval(() => {
+  timerInterval = setInterval(function () {
     //subtracts the time by one
     secondsLeft--;
     //Set to display the time as "Time Remaining 75" and counting
@@ -72,13 +75,11 @@ function setTime() {
     //1000 miliseconds = 1 second
   }, 1000);
 }
-//Kicks off the first quiz box
+
 function startQuiz() {
-    //Hides the start up screen
   startScreen.classList.add("hidden");
   //Sorts the questions to be random using math.random
   randomQuizQuestion = questions.sort(() => Math.random() - 0.5);
-  //set to zero to start at the begining 
   presentQuizQuestion = 0;
   questionPoolEl.classList.remove("hidden");
   setNextQuestion();
@@ -141,32 +142,56 @@ function removeAnswerClass(element) {
 }
 
 function finishQuiz() {
+  clearInterval(timerInterval);
   finishScreenElement.classList.remove("hidden");
   nextBtn.classList.add("hidden");
   questionPoolEl.classList.add("hidden");
   finishBtn.classList.add("hidden");
-  userScore = secondsLeft;
   saveUserInitials();
-  restartQuiz();
+  displayHighScore();
 }
+
 //Built to save the users initials for scoring purposes
 function saveUserInitials() {
+  userScore = secondsLeft;
   userInitials = document.getElementById("initials").value;
-  console.log(userInitials);
   if (userInitials !== "") {
-      let highScore = JSON.parse(window.localStorage.getItem("highScores")) || []
-      let myScore = {
-          score: secondsLeft,
-          userInitials: userInitials
-      }
-      highScore.push(myScore)
-      window.localStorage.setItem("highScores", JSON.stringify(highScore))
+    let highScore = JSON.parse(localStorage.getItem("highScores")) || [];
+    let myScore = {
+      score: secondsLeft,
+      userInitials: userInitials,
+    };
+    highScore.push(myScore);
+    localStorage.setItem("highScores", JSON.stringify(highScore));
   }
 }
+
+function displayHighScore() {
+  let highScores = JSON.parse(localStorage.getItem("highScores"));
+  // highScores.sort((a, b) => {
+  //   console.log(a.score, b.score);
+
+  //   return a.score > b.score;
+  // });
+
+  
+
+  for (let i = 0; i < highScores.length; i++) {
+    const score = highScores[i];
+    let listItem = document.createElement("li");
+    listItem.textContent ="Score: " + score.score + " Initials: " + score.userInitials;
+    htmlScoreContainer.append(listItem);
+    console.log(score)
+    console.log(userInitials)
+    // document.location.reload();
+  }
+}
+
+restartBtn.addEventListener("click", () => {
+
 //Function built to get the user back to the begining of the test
-function restartQuiz() {
+
   //Listens for the click on the Restart Button
-  restartBtn.addEventListener("click", () => {
     //Hides the finish screen
     finishScreenElement.classList.add("hidden");
     //Sets the time back to the original 100 seconds
@@ -174,7 +199,7 @@ function restartQuiz() {
     //will display the first random quiz question on a new quiz
     startQuiz();
   });
-}
+
 
 const questions = [
   {
@@ -243,4 +268,3 @@ const questions = [
     ],
   },
 ];
-submitBtn.onclick = saveUserInitials
