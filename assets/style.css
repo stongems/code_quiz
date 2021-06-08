@@ -18,27 +18,24 @@ body {
 
 #time {
   position: absolute;
+  font-family: "Black Ops One", cursive;
+  margin: 25px;
   top: 0;
   right: 0;
-  font-family: "Black Ops One", cursive;
 }
 
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 800px;
+/* .wrapper {
+  
   max-width: 80%;
   background-color: whitesmoke;
   border-radius: 5px;
-}
+} */
 
 .start-btn {
   display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  align-self: center;
+  justify-content: center;
   border: none;
   background-color: rgb(35, 160, 52);
   border-radius: 25px;
@@ -68,6 +65,12 @@ body {
   transition: ease-in-out 0.3s;
 }
 
+.question {
+  font-size: xx-large;
+  text-align: center;
+  margin: 30px;
+}
+
 .btn {
   display: flex;
   align-items: center;
@@ -86,21 +89,32 @@ body {
 }
 
 .btn:hover {
-  background-color: rgb(40, 209, 167);
+  background-color: rgb(74, 180, 241);
 }
 
 .btn-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 10px;
-  margin: 20px 0;
+  margin: 20px 0; */
+}
+
+.btn-grid button {
+  width: 40%;
 }
 
 .btn.correct {
+  box-shadow: inset 0px 0px 10px 5px #0ee920,
+    0px 0px 15px rgb(14, 233, 25);
   color: rgb(35, 160, 52);
 }
 
 .btn.incorrect {
+  box-shadow: inset 0px 0px 9px 10px rgba(194, 8, 8, 0.8),
+    0px 0px 10px rgb(158, 0, 0);
   color: rgb(167, 23, 23);
 }
 
@@ -114,6 +128,11 @@ body {
 }
 
 .start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   width: 800px;
   max-width: 80%;
   border-radius: 10px;
@@ -122,7 +141,16 @@ body {
     0px 0px 5px rgb(14, 47, 233);
   background-color: royalblue;
 }
+
+.start-screen h1 {
+  display: flex;
+  text-align: center;
+  margin: auto;
+}
+
 .quiz-screen {
+  display: flex;
+  flex-direction: column;
   width: 800px;
   max-width: 80%;
   border-radius: 10px;
@@ -133,6 +161,10 @@ body {
 }
 
 .finish-screen {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
   width: 800px;
   max-width: 80%;
   border-radius: 10px;
@@ -140,6 +172,13 @@ body {
   box-shadow: inset 0px 0px 10px 2px rgb(14, 47, 233),
     0px 0px 5px rgb(14, 47, 233);
   background-color: royalblue;
+}
+
+.finish-screen button{
+display: flex;
+flex-direction: row;
+margin: 10px auto;
+
 }
 
 .controls {
@@ -150,4 +189,10 @@ body {
 
 .hidden {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .btn-grid button {
+    width: 80%;
+  }
 }

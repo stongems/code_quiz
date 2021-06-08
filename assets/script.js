@@ -177,12 +177,13 @@ function displayHighScore() {
   
 
   for (let i = 0; i < highScores.length; i++) {
-    const score = highScores[i];
+    let score = highScores[i];
+    console.log(score)
     let listItem = document.createElement("li");
     listItem.textContent ="Score: " + score.score + " Initials: " + score.userInitials;
     htmlScoreContainer.append(listItem);
-    console.log(score)
-    console.log(userInitials)
+ 
+    
     // document.location.reload();
   }
 }
@@ -196,6 +197,7 @@ restartBtn.addEventListener("click", () => {
     finishScreenElement.classList.add("hidden");
     //Sets the time back to the original 100 seconds
     secondsLeft = QUIZ_LENGTH;
+    console.log(secondsLeft)
     //will display the first random quiz question on a new quiz
     startQuiz();
   });

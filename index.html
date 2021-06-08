@@ -17,15 +17,16 @@
     <div class="start-screen hidden">
       <h1>Javascript Code Quiz</h1>
       <p>
-        Welcome, you will have 100 seconds to complete this test. <br>
-        Time will be removed for wrong answers. Good Luck!
-        <button class="start-btn btn">Start</button>
+        Welcome, you will have 100 seconds to complete this test.
+        Time will be removed for wrong answers. 
       </p>
+      <p><strong>Good Luck!</strong></p>
+      <button class="start-btn btn">Start</button>
     </div>
 
     <div class="quiz-screen hidden">
       <div>
-        <div id="question">Question</div>
+        <div id="question" class="question">Question</div>
         <div id="answer-buttons" class="btn-grid">
           <button class="btn">A</button>
           <button class="btn">B</button>
@@ -44,14 +45,14 @@
         <p>
           Congradulations on completeing the test <br>
       </p>
-      <div>
+    <div>
         <label for="initials"></label>
         <input type="text" name="initials" placeholder="Enter initials here" id="initials">
       </div>
       <ul id="high-score">
       </ul>
-      <button class="restart-btn btn">Restart</button>
       <button class="submit-btn btn">Submit</button>
+      <button class="restart-btn btn">Restart</button>
     </div>
 
     <script src="assets/script.js"></script>
