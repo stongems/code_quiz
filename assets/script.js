@@ -15,7 +15,7 @@ const timer = document.querySelector(".timer");
 const timeUp = document.querySelector("#time-up");
 
 // Will sets the amount fo time we want for the timer
-const QUIZ_LENGTH = 10000;
+const QUIZ_LENGTH = 100;
 let secondsLeft = QUIZ_LENGTH;
 let timerInterval;
 
@@ -55,7 +55,8 @@ finishBtn.addEventListener("click", function () {
 });
 
 submitBtn.addEventListener("click", function () {
-  saveUserInitials();
+  finishQuiz();
+  // saveUserInitials();
 });
 // Timer
 function setTime() {
@@ -182,6 +183,7 @@ function displayHighScore() {
     let listItem = document.createElement("li");
     // ------------------END SCREEN DISPLAY **SCOREBOARD BROKEN - does not real time update score** 
     listItem.textContent ="Score: " + score.score + " User: " + score.userInitials;
+
     htmlScoreContainer.append(listItem);
  
     

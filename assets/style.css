@@ -204,6 +204,7 @@ body {
 /* END SCREEN STYLE */
 .Congrats {
   color: rgb(215, 17, 255);
+  font-size: 30px;
   font-family: "Roboto Mono", monospace;
   border: solid si;
   
@@ -217,6 +218,15 @@ body {
   justify-content: center;
   align-items: center;
 }
+#high-score {
+  color:blueviolet;
+  list-style-type: none;
+}
+#initials {
+  font-size: smaller;
+  color:black;
+}
+
 /* HIDDEN USED TO HIDE everything in START SCREEN - QUESTION SCREEN - FINISH SCREEN  powered by JS*/
 .hidden {
   display: none;
@@ -230,7 +240,11 @@ body {
   @media only screen and (max-width: 410px) {
     .question {
       font-size: smaller;
-
+    }
+      #initials {
+        color: red;
+        font-size: 10px;
+      }
   }
   @media only screen and (max-width: 345px) {
   *,
@@ -243,5 +257,7 @@ body {
   .btn {
   font-size: small;
   }
-
+ .Congrats{
+   font-size: small;
+ }
 }
