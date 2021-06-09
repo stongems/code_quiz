@@ -9,20 +9,34 @@
       href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css" />
     <title>Code Quiz</title>
   </head>
   <body> 
-    <div id="time" class="timer">Time Remaining: 100</div>
-    <div class="start-screen hidden">
+    <!-- **CODE BROKEN** time remaining removed once quiz starts BROKE HERE -->
+    <div id="time" class="timer">Time 
+      <!-- <span in-line colored/styled ORANGE my "Remainin:" /span>" -->
+      <span style="color:rgb(255, 136, 0)">Remaining:></span>  100</div>
+      <!-- DIV END -->
+      <!-- START SCREEN - DIV START start container   -->
+        <div class="start-screen hidden">
+      <!-- hidden class added here ^^^^"> settings adusted in CSS -->
+     <!-- H1 - span added to color Javascript in ORANGE Code Quiz is using ::root css style -->
       <h1><span id="js-color">Javascript </span> Code Quiz</h1>
       <p>
         Welcome, you will have 100 seconds to complete this test.
-        Time will be removed for wrong answers. 
+        a function() of time will be removed for ALL wrong answers.
       </p>
+      <!-- END <P1> -->
+
+        <!-- <P2> Good Luck GREEN Styled in CSS #good-luck -->
       <p id="good-luck">Good Luck!</p>
+      <!-- START BUTTON  has two classes, start-btn &-->
       <button class="start-btn btn">Start</button>
     </div>
+    <!-- DIV CLOSED -->
 
     <div class="quiz-screen hidden">
       <div>
@@ -42,7 +56,7 @@
     <div class="finish-screen hidden">
       <h2 class="Finish-Screen-Title">Javascript Code Quiz</h12>
         <div id="highscore"></div>
-        <p>
+        <p class="Congrats">
           Congratulations on completeing the test!<br>
       </p>
     <div>
@@ -50,11 +64,13 @@
         <input type="text" name="initials" placeholder="Enter initials here" id="initials">
       </div>
       <ul id="high-score">
-      </ul>
-      <button class="submit-btn btn">Submit</button>
-      <button class="restart-btn btn">Restart</button>
-    </div>
-
+        
+        <button class="submit-btn btn">Submit</button>
+        
+        <button class="restart-btn btn">Restart</button>
+      </div>
+    </ul>
+<!-- JS Links -->
     <script src="assets/script.js"></script>
   </body>
 </html>

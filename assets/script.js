@@ -15,7 +15,7 @@ const timer = document.querySelector(".timer");
 const timeUp = document.querySelector("#time-up");
 
 // Will sets the amount fo time we want for the timer
-const QUIZ_LENGTH = 100;
+const QUIZ_LENGTH = 10000;
 let secondsLeft = QUIZ_LENGTH;
 let timerInterval;
 
@@ -64,7 +64,7 @@ function setTime() {
     //subtracts the time by one
     secondsLeft--;
     //Set to display the time as "Time Remaining 75" and counting
-    timer.textContent = `Time Remaining: ${secondsLeft}`;
+    timer.textContent = `${secondsLeft}`;
     //If statement to handle what happens when time runs out
     if (secondsLeft <= 0) {
       secondsLeft = 0;
@@ -151,7 +151,7 @@ function finishQuiz() {
   displayHighScore();
 }
 
-//Built to save the users initials for scoring purposes
+//Built to save the users initials for SCORING purposes
 function saveUserInitials() {
   userScore = secondsLeft;
   userInitials = document.getElementById("initials").value;
@@ -180,7 +180,8 @@ function displayHighScore() {
     let score = highScores[i];
     console.log(score)
     let listItem = document.createElement("li");
-    listItem.textContent ="Score: " + score.score + " Initials: " + score.userInitials;
+    // ------------------END SCREEN DISPLAY **SCOREBOARD BROKEN - does not real time update score** 
+    listItem.textContent ="Score: " + score.score + " User: " + score.userInitials;
     htmlScoreContainer.append(listItem);
  
     

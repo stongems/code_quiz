@@ -3,7 +3,10 @@
 *::after {
   color: white;
   box-sizing: border-box;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  border-radius: 6px;
+  font-weight: bolder;
+  font-family: "Roboto Mono", monospace;
+  
 }
 
 body {
@@ -21,10 +24,15 @@ body {
 
 #time {
   position: absolute;
-  font-family: "Black Ops One", cursive;
+  align-items:center;
+  justify-content:center;
+  font-family: "Roboto Mono", monospace;
+  font-size: 25px;
+  font-weight: bolder;
   padding: 20px;
-  color: rgb(248, 42, 248);
+  color:rgb(251, 255, 0)w;
   background: black;
+  border-radius: 25px;
   margin: 25px;
   top: 0;
   right: 0;
@@ -86,28 +94,7 @@ body {
   background-color: rgba(56, 23, 204, 0.94);
 }
 
-.finish-screen {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  width: 800px;
-  max-width: 80%;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: inset 0px 0px 10px 2px rgb(14, 47, 233),
-    0px 0px 5px rgb(14, 47, 233);
-  background-color: rgba(56, 23, 204, 0.94);
-}
-/* .wrapper {
-  
-  max-width: 80%;
-  background-color: whitesmoke;
-  border-radius: 5px;
-} */
 
-/* !!!!!!!!!!buttons!!!!!  */
-/* !!!!!!!!!!!!!!!!!!!!!! */
 .start-btn {
   display: flex;
   text-align: center;
@@ -147,7 +134,7 @@ body {
   text-align: center;
   margin: 30px;
 }
-
+/* BTN Class for: - Question buttons - Start - Next - Finish - Submit - Restart */
 .btn {
   display: flex;
   align-items: center;
@@ -164,57 +151,97 @@ body {
   cursor: pointer;
   transition: ease-in-out 0.3s;
 }
-
+.finish-screen {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  font-family: "Roboto Mono", monospace;
+  width: 800px;
+  max-width: 80%;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: inset 0px 0px 10px 2px rgb(14, 47, 233),
+    0px 0px 5px rgb(14, 47, 233);
+  background-color: rgba(56, 23, 204, 0.94);
+}
+/* BUTTON HoVeR Color */
 .btn:hover {
   background-color: rgb(74, 180, 241);
 }
-
+/* QUESTION BUTTON GRID flex box */
 .btn-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  /* display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 10px;
-  margin: 20px 0; */
 }
-
+/* TARGET btton */
 .btn-grid button {
   width: 40%;
 }
-
+/* USED TO STYLE AND COLOR = CORRECT BUTTONS */
 .btn.correct {
+  color: black;
+  font-size: 25px;
+  font-weight:bolder;
   box-shadow: inset 0px 0px 10px 5px #0ee920,
-    0px 0px 15px rgb(14, 233, 25);
-  color: rgb(35, 160, 52);
+  0px 0px 15px rgba(14, 233, 25, 0.8);
+  
 }
-
+/* USED TO SYTLE AND COLOR = WRONG/INCORRECT */
 .btn.incorrect {
+  font-weight: 8px;
   box-shadow: inset 0px 0px 9px 10px rgba(194, 8, 8, 0.8),
-    0px 0px 10px rgb(158, 0, 0);
+  0px 0px 10px rgb(158, 0, 0);
   color: rgb(167, 23, 23);
 }
-
+/* FINISH SCREEN BUTTON */
 .finish-screen button{
-display: flex;
-flex-direction: row;
-margin: 10px auto;
-
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto;
+}
+/* END SCREEN STYLE */
+.Congrats {
+  color: rgb(215, 17, 255);
+  font-family: "Roboto Mono", monospace;
+  border: solid si;
+  
 }
 
+
+/* NEXT & FINISH BUTTON controls */
+/* could work on a better name .controls --remove if renamed* */
 .controls {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+/* HIDDEN USED TO HIDE everything in START SCREEN - QUESTION SCREEN - FINISH SCREEN  powered by JS*/
 .hidden {
   display: none;
 }
-
+/* @media MOBLE OPTIMIZATION small-screen-size/phone  */
 @media only screen and (max-width: 600px) {
+  /* only QUESTION buttons are CALLED OUT */
   .btn-grid button {
     width: 80%;
   }
-  .
+  @media only screen and (max-width: 410px) {
+    .question {
+      font-size: smaller;
+
+  }
+  @media only screen and (max-width: 345px) {
+  *,
+*::before,
+*::after {
+  font-size: 18px;
+    }
+
+    
+  .btn {
+  font-size: small;
+  }
+
 }
