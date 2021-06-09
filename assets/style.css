@@ -1,6 +1,7 @@
 *,
 *::before,
 *::after {
+  color: white;
   box-sizing: border-box;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
@@ -8,8 +9,10 @@
 body {
   align-items: center;
   justify-content: center;
-  background-color: rgb(106, 182, 212);
+  background-image: url("https://cdn.pixabay.com/photo/2016/11/24/20/48/programming-1857236_960_720.jpg");
   display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 0;
   margin: 0;
   width: 100vw;
@@ -19,11 +22,83 @@ body {
 #time {
   position: absolute;
   font-family: "Black Ops One", cursive;
+  padding: 20px;
+  color: rgb(248, 42, 248);
+  background: black;
   margin: 25px;
   top: 0;
   right: 0;
 }
 
+
+#start-prompt {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  background-color: rgba(56, 23, 204, 0.94);
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  width: 800px;
+  max-width: 80%;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: inset 0px 0px 10px 2px rgb(14, 47, 233),
+    0px 0px 5px rgb(14, 47, 233);
+  background-color: rgba(56, 23, 204, 0.94);
+}
+
+.start-screen h1 {
+  display: flex;
+  text-align: center;
+  margin: auto;
+
+}
+
+#js-color {
+  color: orange;
+  padding-right: 10px;
+}
+
+#good-luck {
+  color: rgb(28, 224, 55);
+  font-weight: bold;
+  font-size: 33px;
+}
+
+.quiz-screen {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  max-width: 80%;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: inset 0px 0px 10px 2px rgb(14, 47, 233),
+    0px 0px 5px rgb(14, 47, 233);
+  background-color: rgba(56, 23, 204, 0.94);
+}
+
+.finish-screen {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  width: 800px;
+  max-width: 80%;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: inset 0px 0px 10px 2px rgb(14, 47, 233),
+    0px 0px 5px rgb(14, 47, 233);
+  background-color: rgba(56, 23, 204, 0.94);
+}
 /* .wrapper {
   
   max-width: 80%;
@@ -31,6 +106,8 @@ body {
   border-radius: 5px;
 } */
 
+/* !!!!!!!!!!buttons!!!!!  */
+/* !!!!!!!!!!!!!!!!!!!!!! */
 .start-btn {
   display: flex;
   text-align: center;
@@ -118,62 +195,6 @@ body {
   color: rgb(167, 23, 23);
 }
 
-#start-prompt {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: none;
-  background-color: rgb(25, 8, 175);
-}
-
-.start-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 800px;
-  max-width: 80%;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: inset 0px 0px 10px 2px rgb(14, 47, 233),
-    0px 0px 5px rgb(14, 47, 233);
-  background-color: royalblue;
-}
-
-.start-screen h1 {
-  display: flex;
-  text-align: center;
-  margin: auto;
-}
-
-.quiz-screen {
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-  max-width: 80%;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: inset 0px 0px 10px 2px rgb(14, 47, 233),
-    0px 0px 5px rgb(14, 47, 233);
-  background-color: royalblue;
-}
-
-.finish-screen {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  width: 800px;
-  max-width: 80%;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: inset 0px 0px 10px 2px rgb(14, 47, 233),
-    0px 0px 5px rgb(14, 47, 233);
-  background-color: royalblue;
-}
-
 .finish-screen button{
 display: flex;
 flex-direction: row;
@@ -195,4 +216,5 @@ margin: 10px auto;
   .btn-grid button {
     width: 80%;
   }
+  .
 }

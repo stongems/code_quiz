@@ -218,7 +218,7 @@ const questions = [
     answers: [
       { text: "//", correct: false },
       { text: "<!--", correct: false },
-      { text: "/*/", correct: true },
+      { text: "/**/", correct: true },
       { text: "#", correct: false },
     ],
   },
