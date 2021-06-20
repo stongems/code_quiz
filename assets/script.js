@@ -1,5 +1,3 @@
-//create a score sheet
-//JSON the score
 
 // All our JS buttons are set declared here
 const startBtn = document.querySelector(".start-btn");
@@ -79,7 +77,7 @@ function setTime() {
 
 function startQuiz() {
   startScreen.classList.add("hidden");
-  //Sorts the questions to be random using math.random
+  //Sorts the questions to be random using math.random / !!!-0.5 adds to the random equation!!!!
   randomQuizQuestion = questions.sort(() => Math.random() - 0.5);
   presentQuizQuestion = 0;
   questionPoolEl.classList.remove("hidden");
@@ -181,7 +179,6 @@ function displayHighScore() {
     let score = highScores[i];
     console.log(score)
     let listItem = document.createElement("li");
-    // ------------------END SCREEN DISPLAY **SCOREBOARD BROKEN - does not real time update score** 
     listItem.textContent ="Score: " + score.score + " User: " + score.userInitials;
 
     htmlScoreContainer.append(listItem);
