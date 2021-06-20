@@ -237,6 +237,7 @@ body {
   .btn-grid button {
     width: 80%;
   }
+}
   @media only screen and (max-width: 410px) {
     .question {
       font-size: smaller;
@@ -248,16 +249,14 @@ body {
   }
   @media only screen and (max-width: 345px) {
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
   font-size: 18px;
-    }
-
-    
+}
   .btn {
   font-size: small;
-  }
+}
  .Congrats{
    font-size: small;
- }
+}
 }
