@@ -135,6 +135,7 @@ function evaluateAnswer(element, correct) {
   }
 }
 
+// Function was built to add color to the right and wrong answers
 function removeAnswerClass(element) {
   element.classList.remove("correct");
   element.classList.remove("incorrect");
