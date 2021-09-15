@@ -184,16 +184,16 @@ body {
   color: black;
   font-size: 25px;
   font-weight:bolder;
-  box-shadow: inset 0px 0px 10px 5px #0ee920,
-  0px 0px 15px rgba(14, 233, 25, 0.8);
+  box-shadow: inset 0px 0px 10px 5px rgba(184, 0, 221, 0.8,)
+  0px 0px 15px rgba(184, 0, 221, 0.8);
   
 }
 /* USED TO SYTLE AND COLOR = WRONG/INCORRECT */
 .btn.incorrect {
   font-weight: 8px;
-  box-shadow: inset 0px 0px 9px 10px rgba(194, 8, 8, 0.8),
-  0px 0px 10px rgb(158, 0, 0);
-  color: rgb(167, 23, 23);
+  box-shadow: inset 0px 0px 9px 10px rgba(146, 19, 19, 0.8),
+  0px 0px 10px rgb(146, 19, 19);
+  color: rgb(146, 19, 19);
 }
 /* FINISH SCREEN BUTTON */
 .finish-screen button{
